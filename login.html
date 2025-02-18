@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <style>
+    body {
+      background-image: url(loginbg3.jpeg);
+      background-repeat: no-repeat;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 100px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f9f9f970;
+      margin-top: 200px;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+      background-color: #4caf50;
+      color: rgba(255, 255, 255, 0.494);
+      border: none;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #45a049;
+    }
+
+    .signup-link {
+      text-align: center;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <form id="loginForm" action="/login" method="post">
+    <h2>Login</h2>
+    <div class="form-group">
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="username" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-success btn-block">Login</button>
+  </form>
+
+  <form id="signupForm" action="/signup" method="post" style="display: none;">
+    <h2>Sign Up</h2>
+    <div class="form-group">
+      <label for="newUsername">Username:</label>
+      <input type="text" id="newUsername" name="newUsername" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label for="newPassword">Password:</label>
+      <input type="password" id="newPassword" name="newPassword" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
+  </form>
+
+  <div class="signup-link">
+    <p id="toggleLink">Don't have an account? <a href="#signup.html" onclick="toggleForm()">Sign up</a></p>
+  </div>
+</div>
+
+<script>
+  function toggleForm() {
+    var loginForm = document.getElementById("loginForm");
+    var signupForm = document.getElementById("signupForm");
+    var toggleLink = document.getElementById("toggleLink");
+
+    if (loginForm.style.display === "none") {
+      loginForm.style.display = "block";
+      signupForm.style.display = "none";
+      toggleLink.innerHTML = "Don't have an account? <a href='#' onclick='toggleForm()'>Sign up</a>";
+    } else {
+      loginForm.style.display = "none";
+      signupForm.style.display = "block";
+      toggleLink.innerHTML = "Already have an account? <a href='#' onclick='toggleForm()'>Login</a>";
+    }
+  }
+</script>
+
+</body>
+</html>
